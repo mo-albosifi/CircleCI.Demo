@@ -14,9 +14,9 @@ jobs:
       version: edge
     steps:
       - checkout
-      - run:
-          name: Check Version
-          command: dotnet --version
+       - run:
+           name: Check Version
+           command: dotnet --version
       - run:
           name: Restore project dependencies and tools
           command: dotnet restore CirclCiDemo.WebApplication
