@@ -19,10 +19,10 @@ jobs:
           command: docker --version
       - run:
           name: Restore project dependencies and tools
-          command: dotnet restore CirclCiDemo.WebApplication
+          command: dotnet restore $test_path
       - run:
           name: Build project 
-          command: dotnet build CirclCiDemo.WebApplication
+          command: dotnet build $test_path
       - run:
           name: "Running tests"
           command: |
