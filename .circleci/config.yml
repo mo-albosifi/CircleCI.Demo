@@ -10,8 +10,8 @@ workflows:
 jobs:
   build-and-test:
     executor:
-      name: win/vs2019
-      version: powershell.exe
+      name: win/default
+      version: edge
     steps:
       - checkout
       - run:
