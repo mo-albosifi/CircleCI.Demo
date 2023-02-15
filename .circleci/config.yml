@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: Check Version
-          command: dotnet --version
+          command: docker --version
       - run:
           name: Restore project dependencies and tools
           command: dotnet restore CirclCiDemo.WebApplication
