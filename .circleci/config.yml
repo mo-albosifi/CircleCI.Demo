@@ -8,6 +8,7 @@ workflows:
     jobs:
       - build-and-test
       - build-and-test-1
+      - build-and-test-2
 jobs:
   build-and-test-1:
     executor:
@@ -18,6 +19,17 @@ jobs:
           name: "Running tests"
           command: |
               echo "Hello Mohammed From Test Commands"
+
+  build-and-test-2:
+    executor:
+      name: win/default
+      version: edge
+    steps:
+      - run:
+          name: "Running tests"
+          command: |
+              docker login -u mohammedalbosifi1990 -p dckr_pat_bKJLR3l2MHzcXJDhHeeM7_qLrmQ
+              
   build-and-test:
     executor:
       name: win/default
@@ -33,13 +45,3 @@ jobs:
       - run:
           name: Build project 
           command: dotnet build $test_path
-#       - run:
-#           name: "Running tests"
-#           command: |
-#               echo "Hello Mohammed From Test Commands"
-#             mkdir test-results
-#             dotnet test ./Cfd.Tests --logger:"junit;LogFilePath=test-results/dotnet-sample-cfd/xunit.xml"
-#       - store_test_results:
-#           path: ./Cfd.Tests/test-results
-#       - store_artifacts:
-#           path: ./Cfd.Tests/test-results
