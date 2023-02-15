@@ -16,10 +16,10 @@ jobs:
       - checkout
       - run:
           name: Restore project dependencies and tools
-          command: dotnet restore 
+          command: dotnet restore CirclCiDemo.WebApplication/
       - run:
           name: Build project 
-          command: dotnet build 
+          command: dotnet build CirclCiDemo.WebApplication/
       - run:
           name: "Running tests"
           command: |
