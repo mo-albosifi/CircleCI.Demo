@@ -10,16 +10,19 @@ workflows:
 jobs:
   build-and-test:
     executor:
-      name: win/default
-      version: edge
+      name: win/vs2019
+      version: powershell.exe
     steps:
       - checkout
       - run:
+          name: Check Version
+          command: dotnet --version
+      - run:
           name: Restore project dependencies and tools
-          command: dotnet restore ../CirclCiDemo.WebApplication
+          command: dotnet restore CirclCiDemo.WebApplication
       - run:
           name: Build project 
-          command: dotnet build CirclCiDemo.WebApplication/CirclCiDemo.WebApplication
+          command: dotnet build CirclCiDemo.WebApplication
       - run:
           name: "Running tests"
           command: |
