@@ -1,25 +1,32 @@
 version: 2.1
+
 orbs:
-  docker: circleci/docker@2.1.2
-jobs:
-  build-docker-image:
-      executor:
-        name: docker/docker
-        tag: "3.6"
-      steps:
-        - checkout
-        - docker/install-docker-tools
-        - setup_remote_docker:
-            docker_layer_caching: true
-        - run:
-            name: Build and push Docker image
-            command: |
-                echo "hello Mohammed"
-                dotnet test
-#               docker build -t dotnetcoreapi.azurecr.io/dotnet-api:latest .
-#               docker login -u $DOCKER_USER -p $DOCKER_PASS dotnetcoreapi.azurecr.io
-#               docker push dotnetcoreapi.azurecr.io/dotnet-api:latest
+  win: circleci/windows@5.0
+
 workflows:
-  build-and-deploy:
+  build-and-unittest:
     jobs:
-      - build-docker-image
+      - build-and-test
+jobs:
+  build-and-test:
+    executor:
+      name: win/default
+      version: edge
+    steps:
+      - checkout
+      - run:
+          name: Restore project dependencies and tools
+          command: dotnet restore 
+      - run:
+          name: Build project 
+          command: dotnet build 
+      - run:
+          name: "Running tests"
+          command: |
+              echo "Hello Mohammed From Test Commands"
+#             mkdir test-results
+#             dotnet test ./Cfd.Tests --logger:"junit;LogFilePath=test-results/dotnet-sample-cfd/xunit.xml"
+#       - store_test_results:
+#           path: ./Cfd.Tests/test-results
+#       - store_artifacts:
+#           path: ./Cfd.Tests/test-results
