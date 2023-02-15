@@ -7,7 +7,17 @@ workflows:
   build-and-unittest:
     jobs:
       - build-and-test
+      - build-and-test-1
 jobs:
+  build-and-test-1:
+    executor:
+      name: win/default
+      version: edge
+    steps:
+      - run:
+          name: "Running tests"
+          command: |
+              echo "Hello Mohammed From Test Commands"
   build-and-test:
     executor:
       name: win/default
@@ -23,10 +33,10 @@ jobs:
       - run:
           name: Build project 
           command: dotnet build $test_path
-      - run:
-          name: "Running tests"
-          command: |
-              echo "Hello Mohammed From Test Commands"
+#       - run:
+#           name: "Running tests"
+#           command: |
+#               echo "Hello Mohammed From Test Commands"
 #             mkdir test-results
 #             dotnet test ./Cfd.Tests --logger:"junit;LogFilePath=test-results/dotnet-sample-cfd/xunit.xml"
 #       - store_test_results:

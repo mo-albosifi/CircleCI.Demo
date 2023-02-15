@@ -23,10 +23,15 @@ public class WeatherForecastController : ControllerBase
     {
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+                Date = DateTime.Now,
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
     }
 }
+
+// mohammedalbosifi1999$928574270$
+// mohammedalbosifi1990@gmail.com
+// password
+// email
