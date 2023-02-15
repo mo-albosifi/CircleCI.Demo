@@ -15,6 +15,7 @@ jobs:
             name: Build and push Docker image
             command: |
                 echo "hello Mohammed"
+                dotnet test
 #               docker build -t dotnetcoreapi.azurecr.io/dotnet-api:latest .
 #               docker login -u $DOCKER_USER -p $DOCKER_PASS dotnetcoreapi.azurecr.io
 #               docker push dotnetcoreapi.azurecr.io/dotnet-api:latest
